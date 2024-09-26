@@ -18,11 +18,10 @@ df
 df['Fare'] = pd.to_numeric(df['Fare'], errors='coerce')
 df = df.dropna(subset=['Fare'])
 plt.figure(figsize=(15, 5))
-
 for i, pclass in enumerate([1, 2, 3], start=1):
     plt.subplot(1, 3, i)
     data = df[df['Pclass'] == pclass]['Fare']
-    plt.boxplot(data, patch_artist=False)  
+    plt.boxplot(data, patch_artist=False)
     
     plt.title(f'Pclass {pclass} Ticket Prices')
     
@@ -33,8 +32,7 @@ for i, pclass in enumerate([1, 2, 3], start=1):
         plt.ylim(-2, 74)
         plt.yticks(range(0, 71, 10))
     
-    plt.xlabel(f'Pclass={pclass}')
+    plt.xlabel('Pclass')
     plt.ylabel('Ticket Price ($)')
 
-plt.tight_layout()
-plt.show()
+st.pyplot(plt)
